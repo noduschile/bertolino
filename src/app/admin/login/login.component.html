@@ -1,0 +1,40 @@
+<body>
+  <div class="ui middle aligned centered grid">
+    <div class="column">
+      <img class="ui image" src="../../../assets/img/Bertolino1.png">
+      <br>
+      <form class="ui large form">
+        <div class="ui stacked segment">
+          <div class="field">
+            <a class="ui green ribbon label">E-mail</a>
+            <div class="ui left icon input">
+              <i class="large user icon"></i>
+              <input type="text" [(ngModel)]="email" name="email" placeholder=" Correo electronico">
+            </div>
+          </div>
+          <div class="field">
+            <a class="ui green ribbon label">Contraseña</a>
+            <div class="ui left icon input">
+              <i class="large privacy icon"></i>
+              <input type="password" [(ngModel)]="password" name=" contraseña" placeholder="Contraseña">
+            </div>
+          </div>
+          <div class="ui fluid large blue submit button" (click)="loginWithEmail()">Ingresar</div>
+        </div>
+      </form>
+      <div class="ui basic segment">
+        <div class="ui middle aligned centered grid">
+          <div class="ui icon message">
+            <i class="reply icon"></i>
+            <div class="content">
+              <div class="header">
+                Regresar a
+                <a href=#> bertolino.cl</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

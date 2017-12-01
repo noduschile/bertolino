@@ -1,0 +1,41 @@
+<div class="ui stackable centered grid middle aligned content">
+  <div class="eleven wide column">
+    <h3 class="padd">SUSCRIBETE PARA ENVIARTE LO MÁS NUEVO</h3>
+    <p>
+      Si te suscribes te enviaremos las nuevas propiedades que tenemos para ti, junto con toda la información que necesitas.
+    </p>
+  </div>
+  <div class="two wide column">
+    <div class="ui green button" (click)="show = true">SUSCRIBIRSE</div>
+  </div>
+</div>
+
+<sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+  <div class="header">Bienvenido!</div>
+  <div class="ui basic segment">
+    <div class="fourteen wide column">
+      <div class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Nombre</label>
+            <input [(ngModel)]= "correo.name" name="nombre" placeholder="Nombre y apellido" type="text">
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <input [(ngModel)]= "correo.mail" name="mail" placeholder="Correo electrónico" type="email">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="ui green button" (click)="setCorreo(correo)" autofocus>Suscribirse</button>
+  </div>
+</sui-modal>
+
+<sui-dimmer class="page" [(isDimmed)]="pageDimmed" [isClickable]="clickable">
+    <h2 class="ui inverted icon header">
+      <i class="green checkmark icon"></i>
+      ¡Su correo se ha registrado con éxito!
+    </h2>
+  </sui-dimmer>

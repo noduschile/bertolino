@@ -1,0 +1,67 @@
+
+/deep/ .ui.selection.dropdown {
+  min-width: 16em;
+
+  background: none !important;
+  
+  /* color: rgb(255, 255, 255); */
+  box-shadow: none;
+  border: 1px solid rgb(116, 159, 52);
+  border-radius: 2px;
+}
+
+/deep/ .ui.selection.dropdown data {
+  background-color: transparent !important;
+}
+
+/deep/ .ui.selection.dropdown:hover {
+  border-color: rgba(145, 182, 88, 0.9) !important;
+  box-shadow: none;
+}
+
+/deep/ .ui.selection.dropdown:focus {
+  border-color: rgb(162, 208, 93) !important;
+  box-shadow: none;
+}
+
+.ui.primary.buttons .button,
+.ui.primary.button {
+  background-color: rgb(116, 159, 52);
+  /* color: #FFFFFF; */
+  text-shadow: none;
+  background-image: none;
+  border-radius: 0px;
+}
+
+.ui.primary.buttons .button:hover,
+.ui.primary.button:hover {
+  background-color: rgba(116, 159, 52,0.9);
+  /* color: #FFFFFF; */
+  text-shadow: none;
+}
+
+.ui.primary.buttons .button:focus,
+.ui.primary.button:focus {
+  background-color: rgb(116, 159, 52);
+  /* color: #FFFFFF; */
+  text-shadow: none;
+}
+
+.ui.primary.buttons .button:active,
+.ui.primary.button:active {
+  background-color: rgb(116, 159, 52);
+  /* color: #FFFFFF; */
+  text-shadow: none;
+}
+
+.nopad {
+  padding-top: 0 !important;
+}
+
+.nopadd {
+  padding-bottom: 0 !important;
+}
+
+label {
+  font-weight: bold;
+}

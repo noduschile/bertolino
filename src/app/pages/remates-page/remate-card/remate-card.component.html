@@ -1,0 +1,76 @@
+<div class="ui grid">
+  <div class="fourteen wide middle aligned centered column">
+    <div class="ui raised card border">
+      <img class="ui middle aligned centered fluid image" src="{{image}}">
+      <div class="content">
+        <div class="header block-ellipsis-1 border-left">{{remate.name}}</div>
+        <div class="padtop">
+          <font color="black">Fecha:</font>
+          <font color="green">{{(remate.date!=null) ?(getDate(remate.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</font>
+        </div>
+        <div>
+          <font color="black">Garantía de seriedad:</font>
+          <font color="green">$ {{remate.warranty | number}}</font>
+        </div>
+
+        <div class="parent">
+          <div class="block-ellipsis">
+            {{remate.description}}
+          </div>
+        </div>
+        <p>...</p>
+      </div>
+      <div class="extra content">
+        <div class="ui primary button" (click)="show = true">Más información</div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+  <div class="ui basic segment">
+    <div class="ui grid">
+      <div class="one wide column"></div>
+      <div class="fourteen wide centered column">
+        <swiper [config]="config" [(index)]="index">
+          <div *ngFor="let image of remate.images" class="swiper-slide">
+            <img class="ui middle aligned centered fluid image" src={{image.url}}>
+          </div>
+        </swiper>
+      </div>
+      <div class="one wide column"></div>
+    </div>
+  </div>
+  <div class="ui basic segment">
+    <div class="ui centered grid">
+      <div class="fourteen wide column">
+        <div class="content">
+          <div class="header-modal">{{remate.name}}</div>
+          <div class="ui stackable grid">
+            <div class="six wide column">
+              <font class="textcolor" color="black">FECHA: </font>
+              <font class="color" color="green">{{(remate.date!=null) ?(getDate(remate.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</font>
+            </div>
+            <div class="ten wide column">
+              <font class="textcolor" color="black">GARANTÍA DE SERIEDAD: </font>
+              <font class="color" color="green">$ {{remate.warranty | number}}</font>
+            </div>
+          </div>
+          <div>
+            <br>
+            <font class="textcolor" color="black">LUGAR:</font>
+            <font color="black">{{remate.location}}</font>
+          </div>
+          <div class="padtop">
+            {{remate.description}}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="ui primary button" (click)="modal.approve('done')" autofocus>OK</button>
+  </div>
+</sui-modal>

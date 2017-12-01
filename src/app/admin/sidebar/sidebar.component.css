@@ -1,0 +1,61 @@
+
+.imagesize {
+    width: 60px;
+    height: auto;
+    align-items: center;
+    /*padding-bottom: 10%;*/
+  }
+  
+  .ui.segment {
+    position: relative;
+    background: rgba(34, 36, 38, 0.15);
+    box-shadow: none;
+    margin: 1rem 0em;
+    padding: 1em 1em;
+    border-radius: none;
+    border: none;
+  }
+  /*--------------
+        Hover
+  ---------------*/
+  
+  .ui.link.menu .item:hover,
+  .ui.menu .dropdown.item:hover,
+  .ui.menu .link.item:hover,
+  .ui.menu a.item:hover {
+    cursor: pointer;
+    background: rgb(116, 159, 52);
+    color: rgb(255, 255, 255);
+  }
+  
+  /*--------------
+       Active
+  ---------------*/
+  
+  .ui.menu .active.item {
+    background: rgb(45, 136, 50);
+    color: rgba(255, 255, 255, 0.863);
+  }
+  
+  /*--------------
+      Vertical
+  ---------------*/
+  
+  .ui.vertical.menu {
+    padding-top: 0px;
+  }
+  
+  /*--- Item ---*/
+  
+  .ui.vertical.menu .item {
+    height: 60px;
+    padding-top: 20px;
+  }
+  
+  /*--- Border ---*/
+  
+  .ui.vertical.menu .item:before {
+    height: 1px;
+    background: none;
+  }
+  

@@ -1,0 +1,41 @@
+.justify{
+    text-align: justify;
+}
+
+.padd{
+    padding-left: 20%;
+}
+
+.copyr{
+    background-color: rgba(0, 0, 0, 0.8); 
+    color: #FFFFFF;
+    height: 50px;
+    text-align: center;
+}
+
+.greencolor {
+    color: rgb(116, 159, 52);
+}
+
+p {
+    color: rgb(127, 127, 127);
+}
+
+.gray {
+    color: rgb(67, 67, 67) !important;
+}
+
+.bg{
+ background-image: url(../../../assets/img/imgfooter.jpg)
+}
+
+.size{
+    width: 100px;
+    height: 100px;
+}
+
+.column img{
+    height:60px !important;
+    max-width:100%;
+    max-height:100%;
+    }

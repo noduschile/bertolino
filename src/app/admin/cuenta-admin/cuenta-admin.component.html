@@ -1,0 +1,110 @@
+<br>
+<br>
+<div class="ui right grid">
+
+  <div class="twelve wide column">
+    <h1 class="ui left aligned header">/SUSCRIPCIONES</h1>
+    <br>
+    <br>
+    <div class="ui grid">
+      <div class="twelve wide column">
+        <div class="ui search">
+          <div class="ui width icon input">
+            <input class="prompt" placeholder="Ingrese una busqueda..." type="text">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="four wide column">
+        <button class="ui green right floated button">
+          Exportar
+        </button>
+      </div>
+    </div>
+    <br>
+    <table class="ui fixed single line celled unstackable olive table">
+        <thead>
+          <tr>
+            <th class="three wide">Fecha</th>
+            <th class="six wide center aligned">Nombre</th>
+            <th class="five wide center aligned">Mail</th>
+            <th class="two wide center aligned">Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let correo of correosPage">
+            <td class="center aligned">{{(correo.date!=null) ?(getDate(correo.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</td>
+            <td>{{correo.name}}</td>
+            <td class="center aligned">{{correo.mail}}</td>
+            <td class="center aligned">
+              <ng-template let-popup #popupTemplate>
+                <div class="header">Eliminar</div>
+                <div class="content">
+                  <p>¿Esta seguro que desea eliminar este documento?</p>
+                  <div class="ui tiny red right floated button" (click)="deleteCorreo(correo)">Si</div>
+                  <div class="ui tiny primary right floated button" (click)="popup.close()">No</div>
+                </div>
+              </ng-template>
+              <button class="tiny ui color-edit icon button" suiPopup popupText="Editar" (click)="openCollapse(correo)">
+                <i class="edit icon"></i>
+              </button>
+              <button class="tiny ui color-delete icon button" suiPopup [popupTemplate]="popupTemplate" popupTrigger="outsideClick" [popupPlacement]="'left'">
+                <i class="erase icon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="5">
+              <sui-pagination [collectionSize]="(correos | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+                [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+              </sui-pagination>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    <!-- <table class="ui fixed single line celled unstackable olive definition table">
+      <thead>
+        <tr>
+          <th class="one wide"></th>
+          <th class="six wide center aligned">Nombre</th>
+          <th class="six wide center aligned">Correo</th>
+          <th class="six wide center aligned">Fecha</th>
+          <th class="two wide center aligned">Eliminar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let correo of correosPage">
+          <td></td>
+          <td>{{correo.name}}</td>
+          <td>{{correo.mail}}</td>
+          <td class="center aligned">{{(correo.date!=null) ?(getDate(correo.date) | date: 'dd/MM/yy - hh:mm:ss') : 'Sin Fecha'}}</td>
+          <td class="center aligned">
+            <ng-template let-popup #popupTemplate>
+              <div class="header">Eliminar</div>
+              <div class="content">
+                <p>¿Esta seguro que desea eliminar este documento?</p>
+                <div class="ui tiny red right floated button" (click)="deleteCorreo(correo)">Si</div>
+                <div class="ui tiny primary right floated button" (click)="popup.close()">No</div>
+              </div>
+            </ng-template>
+            <button class="tiny ui color-delete icon button" suiPopup [popupTemplate]="popupTemplate" popupTrigger="outsideClick" [popupPlacement]="'left'">
+              <i class="erase icon"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="5">
+            <sui-pagination [collectionSize]="(correo | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+              [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+            </sui-pagination>
+          </th>
+        </tr>
+      </tfoot>
+    </table> -->
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.width{
+    width: 70% !important;
+}
+
+.bg{
+    background-color: rgb(245, 245, 245);
+}
+
+.color-delete{
+    background: transparent;
+    color: rgb(224, 50, 28);
+}
+      
+.color-delete:hover {
+    background-color: rgb(224, 50, 28);
+    color: rgb(255, 255, 255);
+}
+    
+
+.color-edit{
+    background: transparent;
+    color: rgb(63, 111, 179);
+}
+          
+.color-edit:hover {
+    background-color: rgb(63, 111, 179);
+    color: rgb(255, 255, 255);
+}

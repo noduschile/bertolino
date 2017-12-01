@@ -1,0 +1,180 @@
+<br>
+<br>
+<div class="ui right grid">
+
+  <div class="twelve wide column">
+    <h1 class="ui left aligned header">/PROPIEDADES</h1>
+    <br>
+    <br>
+    <div class="ui grid">
+      <div class="twelve wide column">
+        <div class="ui search">
+          <div class="ui width icon input">
+            <input class="prompt" placeholder="Ingrese una busqueda..." type="text">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="four wide column">
+        <button *ngIf="collapse" class="ui green right floated button" (click)="openCollapse(propiedad)">
+          Nuevo
+        </button>
+        <button *ngIf="!collapse" class="ui primary right floated button" (click)="closeCollapse()">
+          Cancelar
+        </button>
+      </div>
+      <div class="sixteen wide column">
+        <div [suiCollapse]="collapse">
+          <div class="ui segment">
+            <lsu-loader [active]="activeLoader" loaderText="Guardando cambios" loaderSize="medium"></lsu-loader>
+            <sui-dimmer [(isDimmed)]="dimmer" isClickable="true">
+              <h2 class="ui inverted icon header">
+                <i class="checkmark icon"></i>
+                La operación se ha realizado con éxito!
+              </h2>
+              <h3>
+                <div class="ui green button" (click)="closeCollapse()">Cerrar</div>
+              </h3>
+            </sui-dimmer>
+            <form class="ui form">
+              <div class="field">
+                <div class="three fields">
+                  <div class="field">
+                    <label>Tipo de Propiedad</label>
+                    <lsu-dropdown [(ngModel)]="propiedad.type" name="type" [data]="typeOptions" placeHolder="Tipo de propiedad"></lsu-dropdown>
+                  </div>
+                  <div class="field">
+                    <label>Tipo de servicio</label>
+                    <lsu-dropdown [(ngModel)]="propiedad.status" name="status" [data]="statusOptions" placeHolder="Arriendo o venta"></lsu-dropdown>
+                    
+                  </div>
+                  <div class="field">
+                    <label>Ubicación</label>
+                    <input type="text" [(ngModel)]="propiedad.location" name="location" placeholder="Ubicación">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="three fields">
+                  <div class="ui field">
+                    <label>Dormitorios</label>
+                    <div class="ui fluid input">
+                      <input type="number" min="0" [(ngModel)]="propiedad.rooms" name="rooms" placeholder="Dormitorios">
+                    </div>
+                  </div>
+                  <div class="ui field">
+                    <label>Baños</label>
+                    <input type="number" min="0" [(ngModel)]="propiedad.baths" name="baths" placeholder="Baños">
+                  </div>
+                  <div class="ui field">
+                    <label>Estacionamientos</label>
+                    <input type="number" min="0" [(ngModel)]="propiedad.parkings" name="parkings" placeholder="Estacionamientos">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="two fields">
+                  <div class="field">
+                    <label>Área</label>
+                    <div class="inline fields">
+                      <div class="field">
+                        <input type="number" min="0" step="10" [(ngModel)]="propiedad.area.value" name="area" placeholder="Precio">
+                      </div>
+                      <div class="field">
+                        <sui-radio-button name="mt2" value="mt2" [(ngModel)]="propiedad.area.unit"> m
+                          <sup>2</sup>
+                        </sui-radio-button>
+                      </div>
+                      <div class="field">
+                        <sui-radio-button name="has" value="has" [(ngModel)]="propiedad.area.unit">ha</sui-radio-button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Precio</label>
+                    <div class="inline fields">
+                      <div class="field">
+                        <input type="number" min="0" step="10" [(ngModel)]="propiedad.price.value" name="price" placeholder="Precio">
+                      </div>
+                      <div class="field">
+                        <sui-radio-button name="pesos" value="CLP" [(ngModel)]="propiedad.price.unit">CLP</sui-radio-button>
+                      </div>
+                      <div class="field">
+                        <sui-radio-button name="UF" value="UF" [(ngModel)]="propiedad.price.unit">UF</sui-radio-button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Descripción</label>
+                <textarea rows="2" style="height: 50px;" type="text" [(ngModel)]="propiedad.description" name="description" placeholder="Descripción"></textarea>
+              </div>
+              <div class="field">
+                <div class="fields">
+                  <div class="eleven wide field">
+                    <label>Fotos</label>
+                    <image-upload buttonCaption="Examinar" [(files)]="files" [maxFileSize]="500000" fileTooLargeMessage="Imagen demasiado grande. No puede exceder 0,5 MB" dropBoxMessage="Arrastre sus imagenes acá" clearButtonCaption="Limpiar" class="customClass" [uploadedFiles]="urls" [max]="10"
+                     (uploadStateChanged)="onUploadStateChanged($event)"></image-upload>
+                  </div>
+                  <div class="five wide field">
+                    <br>
+                    <br>
+                    <br>
+                    <button class="ui green right floated button" (click)="dataUpload()">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <table class="ui fixed single line celled unstackable olive table">
+      <thead>
+        <tr>
+          <th class="three wide center aligned">Fecha Publicación</th>
+          <th class="four wide center aligned">Tipo Propiedad</th>
+          <th class="four wide center aligned">Ubicación</th>
+          <th class="three wide center aligned">Estado</th>
+          <th class="two wide center aligned">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let propiedad of propiedadesPage">
+          <td class="center aligned">{{(propiedad.date!=null) ?(getDate(propiedad.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</td>
+          <td>{{propiedad.type}}</td>
+          <td>{{propiedad.location}}</td>
+          <td class="center aligned">{{propiedad.status}}</td>
+          <td class="right aligned">
+            <ng-template let-popup #popupTemplate>
+              <div class="header">Eliminar</div>
+              <div class="content">
+                <p>¿Esta seguro que desea eliminar este documento?</p>
+                <div class="ui tiny red right floated button" (click)="deletePropiedad(propiedad)">Si</div>
+                <div class="ui tiny primary right floated button" (click)="popup.close()">No</div>
+              </div>
+            </ng-template>
+            <button class="tiny ui color-edit icon button" suiPopup popupText="Editar" (click)="closeCollapse(); openCollapse(propiedad)">
+              <i class="edit icon"></i>
+            </button>
+            <button class="tiny ui color-delete icon button" suiPopup [popupTemplate]="popupTemplate" popupTrigger="outsideClick" [popupPlacement]="'left'">
+              <i class="erase icon"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="5">
+            <sui-pagination [collectionSize]="(propiedades | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+              [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+            </sui-pagination>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

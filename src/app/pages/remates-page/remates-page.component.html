@@ -1,0 +1,31 @@
+<div class="ui equal width center aligned grid">
+  <div class="row">
+    <div class="nopad column bg">
+        <app-navbar></app-navbar>
+      <h1 class="pad-text">REMATES</h1>
+    </div>
+  </div>
+</div>
+<br>
+<div class="ui basic segment page">
+  <div class="ui grid">
+    <div class="one wide column"></div>
+    <div class="fourteen wide column">
+      <div class="ui link middle aligned centered stackable cards">
+        <app-remate-card *ngFor="let remate of rematesPage" [remate]="remate"></app-remate-card>
+      </div>
+    </div>
+    <div class="one wide column"></div>
+  </div>
+</div>
+<br>
+
+<div class="ui basic segment">
+  <div class="ui centered stackable grid">
+    <sui-pagination [collectionSize]="(remates | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+      [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+    </sui-pagination>
+  </div>
+</div>
+<br>
+<br>

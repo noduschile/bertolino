@@ -1,0 +1,66 @@
+.paralelogramo {
+    width: 200px; 
+    height: 100px; 
+    background: rgb(36,84,150);
+    transform: skew(-20deg);
+    margin-left: 3em;
+}
+
+.sizetransform {
+    width: 70px !important;
+    height: auto;
+    transform: skew(20deg);
+}
+
+.size {
+    width: 70px !important;
+}
+
+.transform {
+    transform: skew(20deg);
+    color: white;
+    font-size: 15px;
+}
+
+.paddleft {
+    padding-left: 0 !important;
+    padding-bottom: 0!important;
+}
+
+.paddright{
+    padding-right: 0 !important;
+    padding-bottom: 0!important;
+}
+
+.typefont {
+    color: rgb(38, 38, 38);
+    font-size: 18px;
+}
+
+.typefont2 {
+    color: rgb(230, 230, 230);
+    font-size: 18px;
+}
+
+.nopad {
+    padding: 0 !important;
+}
+.button {
+    margin-bottom: 10px !important;
+  }
+
+  .image {
+    margin-bottom: 5px !important;
+  }
+
+.font {
+    color: rgb(165, 165, 165);
+    padding-bottom: 0 !important;
+    margin-bottom:  0 !important;
+}
+
+.font1 {
+    color: rgb(110, 110, 110);
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}

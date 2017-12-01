@@ -1,0 +1,34 @@
+<div class="ui equal width center aligned grid">
+  <div class="bg row" style="background-color: rgb(28, 5, 157);color: #FFFFFF;">
+    <div class="column">
+        <div class="nav row">
+            <div class="column">
+                <app-navbar></app-navbar>
+            </div>
+          </div>
+        <div class="blue row">
+            <div class="column">
+              <app-search (propiedadesFiltered)="handlePropiedadesFiltered($event)"></app-search>
+            </div>
+          </div>    
+    </div>
+  </div>
+</div>
+
+<div class="page">
+<div class="ui one column centered grid">
+  <div class="four wide centered aligned column">
+    <H3>PROPIEDADES RECIENTES</H3>
+    <div class="ui horizontal divider">
+      <div class="line"></div>
+    </div>
+    <p>Las mejores propiedades a tu alcance</p>
+  </div>
+  <div class="sixteen wide column">
+    <br>
+    <br>
+    <app-propiedad-card *ngFor="let propiedad of propiedades | slice:0:3; let i=index" [propiedad]="propiedad"></app-propiedad-card>
+  </div>
+</div>
+<br>
+</div>

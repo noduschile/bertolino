@@ -1,0 +1,122 @@
+<div class="ui basic segment">
+  <div class="ui grid">
+    <div class="one wide column"></div>
+    <div class="fourteen wide column">
+      <sui-tabset>
+        <div class="ui green pointing secondary stackable menu">
+          <div class="item">
+            <i class="small search icon">
+            </i>
+            BÚSQUEDA RÁPIDA</div>
+          <a class="item right aligned" [ngClass]="{ active: activeTab[0]}" suiTabHeader="1" (click)="onUpdateStatus('todo')">TODO</a>
+          <a class="item" [ngClass]="{ active: activeTab[1]}" suiTabHeader="1" (click)="onUpdateStatus('arriendo')">ARRIENDO</a>
+          <a class="item" [ngClass]="{ active: activeTab[2]}" suiTabHeader="1" (click)="onUpdateStatus('venta')">VENTA</a>
+        </div>
+        <div class="ui basic segment" suiTabContent="1">
+          <div class="ui stackable grid container">
+            <div class="four wide computer eight wide tablet column">
+              <label>Ubicación</label>
+              <lsu-dropdown [(ngModel)]="selected.location" (ngModelChange)="onUpdateLocation($event)" [data]="location" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Tipo de Propiedad</label>
+              <lsu-dropdown [(ngModel)]="selected.type" (ngModelChange)="onUpdateType($event)" [data]="type" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Área</label>
+              <lsu-dropdown name="area" placeHolder="{{selected.areaMin | number}} - {{selected.areaMax | number}}"  suiPopup [popupTemplate]="areaTemplate" popupTrigger="outsideClick" [popupPlacement]="'bottom'"></lsu-dropdown>
+              <ng-template let-popup #areaTemplate>
+                <div class="ui one column grid">
+                  <div class="sixteen wide column">
+                    <div class="ui two columns grid">
+                      <div class="middle aligned five wide column">
+                        <div class="field">
+                          <sui-radio-button name="mt2" value="mt2" [(ngModel)]="selected.area" (ngModelChange)="onUpdateArea($event)">m
+                            <sup>2</sup>
+                          </sui-radio-button>
+                        </div>
+                      </div>
+                      <div class="middle aligned five wide column">
+                        <div class="field">
+                          <sui-radio-button name="hectareas" value="has" [(ngModel)]="selected.area" (ngModelChange)="onUpdateArea($event)">hectáreas</sui-radio-button>
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="ui fluid input">
+                          <input placeholder="min" [(ngModel)]="selected.areaMin" type="number">
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="ui fluid input">
+                          <input placeholder="máx" [(ngModel)]="selected.areaMax" type="number">
+                        </div>
+                      </div>
+                    </div>
+                    <ion-range-slider #sliderElement type="double" [min]="areaMin" [max]="areaMax" [from]="selected.areaMin" [to]="selected.areaMax" (onFinish)="onUpdateArea($event)"></ion-range-slider>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Precio</label>
+              <lsu-dropdown name="price" placeHolder="{{selected.priceMin | number}} - {{selected.priceMax | number}}"  suiPopup [popupTemplate]="precioTemplate" popupTrigger="outsideClick" [popupPlacement]="'bottom'"></lsu-dropdown>              
+              <ng-template let-popup #precioTemplate>
+                <div class="ui one column grid">
+                  <div class="sixteen wide column">
+                    <div class="ui two columns grid">
+                        <div class="middle aligned five wide column">
+                            <div class="field">
+                              <sui-radio-button name="pesos" value="CLP" [(ngModel)]="selected.currency" (ngModelChange)="onUpdatePrice($event)">Pesos</sui-radio-button>
+                            </div>
+                          </div>
+                          <div class="middle aligned five wide column">
+                            <div class="field">
+                              <sui-radio-button name="UF" value="UF" [(ngModel)]="selected.currency" (ngModelChange)="onUpdatePrice($event)">UF</sui-radio-button>
+                            </div>
+                          </div>
+                      <div class="column">
+                        <div class="ui fluid input">
+                          <input placeholder="min" [(ngModel)]="selected.priceMin" type="number">
+                        </div>
+                      </div>
+                      <div class="column">
+                        <div class="ui fluid input">
+                          <input placeholder="máx" [(ngModel)]="selected.priceMax" type="number">
+                        </div>
+                      </div>
+                    </div>
+                    <ion-range-slider #sliderElement type="double" [min]="priceMin" [max]="priceMax" [from]="selected.priceMin" [to]="selected.priceMax" (onFinish)="onUpdatePrice($event)"></ion-range-slider>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Dormitorios</label>
+              <lsu-dropdown [(ngModel)]="selected.rooms" (ngModelChange)="onUpdateRooms($event)" [data]="rooms" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Estacionamientos</label>
+              <lsu-dropdown [(ngModel)]="selected.parkings" (ngModelChange)="onUpdateParkings($event)" [data]="parkings" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Baños</label>
+              <lsu-dropdown [(ngModel)]="selected.baths" (ngModelChange)="onUpdateBaths($event)" [data]="baths" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Acciones</label>
+              <div class="ui two column grid">
+                <div class="column">
+                  <button class="ui primary fluid button" (click)="cleanFilters()">Limpiar</button>
+                </div>
+                <div class="column">
+                  <button class="ui primary fluid button" routerLink="/propiedades" (click)="applyFilters()">Aplicar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sui-tabset>
+    </div>
+    <div class="one wide column"></div>
+  </div>
+</div>

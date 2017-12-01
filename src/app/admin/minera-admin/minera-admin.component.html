@@ -1,0 +1,123 @@
+<br>
+<br>
+<div class="ui right grid">
+
+  <div class="twelve wide column">
+    <h1 class="ui left aligned header">/PERTENENCIAS MINERAS</h1>
+    <br>
+    <br>
+    <div class="ui grid">
+      <div class="twelve wide column">
+        <div class="ui search">
+          <div class="ui width icon input">
+            <input class="prompt" placeholder="Ingrese una busqueda..." type="text">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="four wide column">
+        <button *ngIf="collapse" class="ui green right floated button" (click)="openCollapse(minera)">
+          Nuevo
+        </button>
+        <button *ngIf="!collapse" class="ui primary right floated button" (click)="closeCollapse()">
+          Cancelar
+        </button>
+      </div>
+      <div class="sixteen wide column">
+        <div [suiCollapse]="collapse">
+          <div class="ui segment">
+            <lsu-loader [active]="activeLoader" loaderText="Guardando cambios" loaderSize="medium"></lsu-loader>
+            <sui-dimmer [(isDimmed)]="dimmer" [isClickable]="true">
+              <h2 class="ui inverted icon header">
+                <i class="checkmark icon"></i>
+                La operación se ha realizado con éxito!
+              </h2>
+              <h3>
+                <div class="ui green button" (click)="closeCollapse()">Cerrar</div>
+              </h3>
+            </sui-dimmer>
+            <form class="ui form">
+              <div class="field">
+                <div class="fields">
+                  <div class="ten wide field">
+                    <label>Nombre</label>
+                    <input type="text" [(ngModel)]="minera.name" name="nombre" placeholder="nombre">
+                  </div>
+                  <div class="six wide field">
+                    <label>Precio</label>
+                    <input type="text" [(ngModel)]="minera.price" name="precio" placeholder="Precio">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Descripción</label>
+                <textarea rows="2" style="height: 50px;" type="text" [(ngModel)]="minera.description" name="descripcion" placeholder="Descripción"></textarea>
+              </div>
+
+              <div class="field">
+                <div class="fields">
+                  <div class="eleven wide field">
+                    <label>Fotos</label>
+                    <image-upload buttonCaption="Examinar" [(files)]="files" [maxFileSize]="500000" fileTooLargeMessage="Imagen demasiado grande. No puede exceder 0,5 MB"
+                      dropBoxMessage="Arrastre sus imagenes acá" clearButtonCaption="Limpiar" class="customClass" [uploadedFiles]="urls"
+                      [max]="10" (uploadStateChanged)="onUploadStateChanged($event)"></image-upload>
+                  </div>
+                  <div class="five wide field">
+                    <br>
+                    <br>
+                    <br>
+                    <button class="ui green right floated button" (click)="dataUpload()">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <table class="ui fixed single line celled unstackable olive table">
+      <thead>
+        <tr>
+          <th class="three wide">Fecha</th>
+          <th class="six wide center aligned">Nombre</th>
+          <th class="five wide center aligned">Precio</th>
+          <th class="two wide center aligned">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let minera of minerasPage">
+          <td class="center aligned">{{(minera.date!=null) ?(getDate(minera.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</td>
+          <td>{{minera.name}}</td>
+          <td class="center aligned">{{minera.price}}</td>
+          <td class="center aligned">
+            <ng-template let-popup #popupTemplate>
+              <div class="header">Eliminar</div>
+              <div class="content">
+                <p>¿Esta seguro que desea eliminar este documento?</p>
+                <div class="ui tiny red right floated button" (click)="deleteMinera(minera)">Si</div>
+                <div class="ui tiny primary right floated button" (click)="popup.close()">No</div>
+              </div>
+            </ng-template>
+            <button class="tiny ui color-edit icon button" suiPopup popupText="Editar" (click)="closeCollapse();openCollapse(minera)">
+              <i class="edit icon"></i>
+            </button>
+            <button class="tiny ui color-delete icon button" suiPopup [popupTemplate]="popupTemplate" popupTrigger="outsideClick" [popupPlacement]="'left'">
+              <i class="erase icon"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="5">
+            <sui-pagination [collectionSize]="(mineras | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+              [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+            </sui-pagination>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

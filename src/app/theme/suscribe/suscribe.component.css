@@ -1,0 +1,16 @@
+.grid {
+    background-color: rgb(63, 111, 179); 
+    color: #FFFFFF;
+    padding: 35px 0 35px 0px;
+    box-shadow: 0px 0px 15px rgba(34, 36, 38, 0.5);
+}
+.button {
+    border-radius: 0.1em;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    background-color: rgb(116, 159, 52);
+}
+
+.padd {
+    margin-bottom: 5px !important;
+}

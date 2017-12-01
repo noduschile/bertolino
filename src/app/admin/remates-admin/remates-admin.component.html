@@ -1,0 +1,138 @@
+<br>
+<br>
+<div class="ui right grid">
+  <div class="twelve wide column">
+    <h1 class="ui left aligned header">/REMATES</h1>
+    <br>
+    <br>
+    <div class="ui grid">
+      <div class="twelve wide column">
+        <div class="ui search">
+          <div class="ui width icon input">
+            <input class="prompt" placeholder="Ingrese una busqueda..." type="text">
+            <i class="search icon"></i>
+          </div>
+          <div class="results"></div>
+        </div>
+      </div>
+      <div class="four wide column">
+        <button *ngIf="collapse" class="ui green right floated button" (click)="openCollapse(remate)">
+          Nuevo
+        </button>
+        <button *ngIf="!collapse" class="ui primary right floated button" (click)="closeCollapse()">
+          Cancelar
+        </button>
+      </div>
+      <div class="sixteen wide column">
+        <div [suiCollapse]="collapse">
+          <div class="ui segment">
+            <lsu-loader [active]="activeLoader" loaderText="Guardando cambios" loaderSize="medium"></lsu-loader>
+            <sui-dimmer [(isDimmed)]="dimmer" isClickable="true">
+              <h2 class="ui inverted icon header">
+                <i class="checkmark icon"></i>
+                La operación se ha realizado con éxito!
+              </h2>
+              <h3>
+                <div class="ui green button" (click)="closeCollapse()">Cerrar</div>
+              </h3>
+            </sui-dimmer>
+            <form class="ui form">
+              <div class="field">
+                <div class="two fields">
+                  <div class="field">
+                    <label>Nombre</label>
+                    <input type="text" [(ngModel)]="remate.name" name="nombre" placeholder="Nombre">
+                  </div>
+                  <div class="field">
+                    <label>Lugar</label>
+                    <input type="text" [(ngModel)]="remate.location" name="lugar" placeholder="Lugar">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="two fields">
+                  <div class="field">
+                    <label>Fecha</label>
+                    <div class="ui left icon input">
+                      <i class="calendar icon"></i>
+                      <input suiDatepicker [(ngModel)]="fecha" name="fecha" pickerMode="date" [pickerUseNativeOnMobile]="false">
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label>Garantía de Seriedad</label>
+                    <input type="number" [(ngModel)]="remate.warranty" step="10" name="lugar" placeholder="Garantía">
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Descripción</label>
+                <textarea rows="2" style="height: 50px;" type="text" [(ngModel)]="remate.description" name="descripcion" placeholder="Descripción"></textarea>
+              </div>
+              <div class="field">
+                <div class="fields">
+                  <div class="eleven wide field">
+                    <label>Fotos</label>
+                    <image-upload buttonCaption="Examinar" [(files)]="files" [maxFileSize]="500000" fileTooLargeMessage="Imagen demasiado grande. No puede exceder 0,5 MB"
+                      dropBoxMessage="Arrastre sus imagenes acá" clearButtonCaption="Limpiar" class="customClass" [uploadedFiles]="urls"
+                      [max]="10" (uploadStateChanged)="onUploadStateChanged($event)"></image-upload>
+                  </div>
+                  <div class="five wide field">
+                    <br>
+                    <br>
+                    <br>
+                    <button class="ui green right floated button" (click)="dataUpload()">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <table class="ui fixed single line celled unstackable olive definition table">
+      <thead>
+        <tr>
+          <th class="one wide"></th>
+          <th class="five wide center aligned">Nombre</th>
+          <th class="four wide center aligned">Lugar</th>
+          <th class="four wide center aligned">Fecha</th>
+          <th class="two wide center aligned">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let remate of rematesPage">
+          <td class="center aligned">{{remate.nombre}}</td>
+          <td>{{remate.name}}</td>
+          <td>{{remate.location}}</td>
+          <td class="center aligned">{{(remate.date!=null) ?(getDate(remate.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</td>
+          <td class="center aligned">
+            <ng-template let-popup #popupTemplate>
+              <div class="header">Eliminar</div>
+              <div class="content">
+                <p>¿Esta seguro que desea eliminar este documento?</p>
+                <div class="ui tiny red right floated button" (click)="deleteRemate(remate)">Si</div>
+                <div class="ui tiny primary right floated button" (click)="popup.close()">No</div>
+              </div>
+            </ng-template>
+            <button class="tiny ui color-edit icon button" suiPopup popupText="Editar" (click)="closeCollapse();openCollapse(remate)">
+              <i class="edit icon"></i>
+            </button>
+            <button class="tiny ui color-delete icon button" suiPopup [popupTemplate]="popupTemplate" popupTrigger="outsideClick" [popupPlacement]="'left'">
+              <i class="erase icon"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="5">
+            <sui-pagination [collectionSize]="(remates | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+              [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+            </sui-pagination>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

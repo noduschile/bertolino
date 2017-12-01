@@ -12,6 +12,7 @@
   },
   "private": true,
   "dependencies": {
+    "@agm/core": "^1.0.0-beta.1",
     "@angular/animations": "^4.2.4",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
@@ -21,8 +22,19 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.5",
+    "angular2-image-upload": "^1.0.0-rc.0",
+    "angular2-semantic-ui": "^2.0.9",
+    "angularfire2": "^5.0.0-rc.3",
     "core-js": "^2.4.1",
+    "firebase": "^4.6.0",
+    "ng2-ion-range-slider": "^1.0.3",
+    "ng2-semantic-ui": "^0.9.6",
+    "ngx-bootstrap": "^1.9.3",
+    "ngx-swiper-wrapper": "^4.6.6",
+    "promise-polyfill": "6.0.2",
     "rxjs": "^5.4.2",
+    "semantic-ui-calendar": "0.0.8",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {

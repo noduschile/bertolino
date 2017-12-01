@@ -1,0 +1,23 @@
+
+.row {
+    background-image:url('../../assets/img/inicio.png');
+    background-size: 100%;
+    background-color: rgb(75, 75, 70) !important; 
+    color: #FFFFFF;
+    height: 30em;
+    padding: 0 !important;
+}
+
+.bg {
+    background-color: rgba(11, 63, 138, 0.8);
+    margin: none !important;
+  }
+
+.centertext {
+    padding-top: 5%;
+    padding-bottom: 5% !important;
+}
+
+.height {
+    max-height: 400px !important;
+}

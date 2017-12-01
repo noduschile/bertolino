@@ -1,0 +1,38 @@
+.menu{
+    border-radius: 0px 0px 0px 3px;
+    background-color: rgb(11, 63, 138) !important;
+    /* width: 100%;
+    padding:  0 0 0 0 !important; */
+} 
+.menu > .item {
+    border-radius: 0 0 0 0;
+    font-size: 16px;
+}
+
+.ui.link.menu .item:active,
+.ui.menu .link.item:active,
+.ui.menu a.item:active {
+    background: rgba(116, 159, 52, 0.8);
+    color: rgba(116, 159, 52, 0.8);
+}
+
+.ui.menu .active.item {
+    background: rgb(116, 159, 52);
+    color: rgb(116, 159, 52);
+    box-shadow: none;
+
+  }
+
+.page-scroll-navbar {
+    position: fixed;
+    z-index: 6;
+    top: 0;
+    right: 0;
+    /* width: 100%; */
+    opacity: 0.8;
+}
+
+.padd {
+    padding-top: 25px !important;
+    padding-bottom: 25px !important;
+}

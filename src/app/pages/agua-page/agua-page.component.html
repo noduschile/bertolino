@@ -1,0 +1,30 @@
+<div class="ui equal width center aligned grid">
+  <div class="row">
+    <div class="nopad column bg">
+        <app-navbar></app-navbar>
+      <h1 class="pad-text">DERECHOS DE AGUA</h1>
+    </div>
+  </div>
+</div>
+<div class="ui basic segment page">
+  <div class="ui grid">
+    <div class="one wide column"></div>
+    <div class="fourteen wide column">
+      <div class="ui link middle aligned centered stackable cards">
+        <app-agua-card *ngFor="let agua of aguasPage" [agua]="agua"></app-agua-card>
+      </div>
+    </div>
+    <div class="one wide column"></div>
+  </div>
+</div>
+<br>
+
+<div class="ui basic segment">
+  <div class="ui centered stackable grid">
+    <sui-pagination [collectionSize]="(aguas | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+      [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+    </sui-pagination>
+  </div>
+</div>
+<br>
+<br>

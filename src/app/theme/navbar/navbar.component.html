@@ -1,0 +1,63 @@
+<div class="ui grid">
+  <div class="sixteen wide computer only column">
+    <div class="ui compact right floated inverted borderless menu" [ngClass]="{'page-scroll-navbar': isScrolled}">
+      <a routerLink="/inicio" routerLinkActive="active" class="padd item">Inicio</a>
+      <a routerLink="/agente" routerLinkActive="active" class="padd item">Nosotros</a>
+      <a routerLink="/propiedades" routerLinkActive="active" class="padd item">Propiedades</a>
+      <a routerLink="/remates" routerLinkActive="active" class="padd item">Remates</a>
+      <a routerLink="/agua" routerLinkActive="active" class="padd item">Derechos de Agua</a>
+      <a routerLink="/minera" routerLinkActive="active" class="padd item">Pertenencias Mineras</a>
+      <a routerLink="/contacto" routerLinkActive="active" class="padd item">Contacto</a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--  <div class="three wide column computer only"></div>
+  <div class="thirteen wide computer only sixteen wide tablet only nopad column">
+
+    <div class="ui fluid inverted borderless big menu" [ngClass]="{'page-scroll-navbar': isScrolled}">
+      <div class="right menu">
+        <a routerLink="/inicio" routerLinkActive="active" class="item">Inicio</a>
+        <a routerLink="/agente" routerLinkActive="active" class="item">Agente</a>
+        <a routerLink="/propiedades" routerLinkActive="active" class="lines item">Corretaje de Propiedades</a>
+        <a routerLink="/remates" routerLinkActive="active" class="item">Remates</a>
+        <a routerLink="/agua" routerLinkActive="active" class="lines item">Derechos de Agua</a>
+        <a routerLink="/minera" routerLinkActive="active" class="lines item">Pertenencias Mineras</a>
+        <a routerLink="/contacto" routerLinkActive="active" class="item">Contacto</a>
+      </div>
+    </div>
+
+  </div>-->
+
+  <div class="left aligned sixteen wide mobile only tablet only column">
+    <div class="ui fluid inverted borderless stackable big menu" [ngClass]="{'page-scroll-navbar': isScrolled}">
+      <a class="item" (click)="collapse = !collapse">
+        <i class="sidebar icon"></i>
+      </a>
+      <div [suiCollapse]="collapse">
+        <a routerLink="/inicio" routerLinkActive="active" class="item">Inicio</a>
+        <a routerLink="/agente" routerLinkActive="active" class="item">Agente</a>
+        <a routerLink="/propiedades" routerLinkActive="active" class="item">Corretaje de Propiedades</a>
+        <a routerLink="/remates" routerLinkActive="active" class="item">Remates</a>
+        <a routerLink="/agua" routerLinkActive="active" class="item">Derechos de Agua</a>
+        <a routerLink="/minera" routerLinkActive="active" class="item">Pertenencias Mineras</a>
+        <a routerLink="/contacto" routerLinkActive="active" class="item">Contacto</a>
+      </div>
+    </div>
+  </div>
+</div>

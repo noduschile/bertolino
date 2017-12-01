@@ -1,0 +1,62 @@
+<div class="ui grid">
+  <div class="fourteen wide middle aligned centered column">
+    <div class="ui raised card border">
+      <img class="ui middle aligned centered fluid image" src="{{image}}">
+      <div class="content">
+        <div class="meta price">
+          <font color="green">$ {{minera.price | number}}</font>
+        </div>
+        <div class="header block-ellipsis-1 border-left">
+          {{minera.name}}
+        </div>
+        <div class="block-ellipsis">
+          {{minera.description}}
+        </div>
+        <p>...</p>
+      </div>
+      <div class="extra content">
+        <div class="ui primary button" (click)="show = true">Más información</div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+  <div class="ui basic segment">
+    <div class="ui grid">
+      <div class="fourteen wide centered column">
+        <swiper [config]="config" [(index)]="index">
+          <div *ngFor="let image of minera.images" class="swiper-slide">
+            <img class="ui middle aligned centered fluid image" src={{image.url}}>
+          </div>
+        </swiper>
+      </div>
+    </div>
+  </div>
+  <div class="ui basic segment">
+    <div class="ui centered grid">
+      <div class="fourteen wide column">
+        <div class="content">
+          <div class="header-modal">{{minera.name}}</div>
+          <div class="ui horizontal statistics">
+            <div class="statistic">
+              <div class="text-color">
+                Precio:
+              </div>
+              <div class="price-modal">
+                $ {{minera.price | number}}
+              </div>
+            </div>
+          </div>
+          <div class="text">
+            {{minera.description}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="ui primary button" (click)="modal.approve('done')" autofocus>OK</button>
+  </div>
+</sui-modal>

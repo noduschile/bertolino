@@ -1,0 +1,46 @@
+<div class="ui grid">
+  <div class="fourteen wide middle aligned centered column">
+    <div class="ui raised card border">
+      <div class="content">
+        <div class="header block-ellipsis-1 border-left">{{agua.name}}</div>
+        <div class="price">
+          <font color="green">$ {{agua.price | number}}</font>
+        </div>
+        <div class="block-ellipsis">
+          {{agua.description}}
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="ui primary button" (click)="show = true">Más información</div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<sui-modal *ngIf="show" [isClosable]="true" (dismissed)="show = false" #modal>
+  <div class="ui basic segment">
+    <div class="ui centered grid">
+      <div class="fourteen wide column">
+        <div class="content">
+          <div class="header-modal">{{agua.name}}</div>
+          <div class="ui horizontal statistics">
+            <div class="statistic">
+              <div class="text-color">
+                Precio:
+              </div>
+              <div class="price-modal">
+                $ {{agua.price | number}}
+              </div>
+            </div>
+          </div>
+          <p>
+            {{agua.description}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="ui primary button" (click)="modal.approve('done')" autofocus>OK</button>
+  </div>
+</sui-modal>

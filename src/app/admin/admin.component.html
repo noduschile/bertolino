@@ -1,0 +1,6 @@
+<div *ngIf="afAuth.authState | async; let user; else showLogin">
+  <app-sidebar></app-sidebar>
+</div>
+<ng-template #showLogin>
+  <app-login></app-login>
+</ng-template>

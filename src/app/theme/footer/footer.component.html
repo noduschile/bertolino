@@ -1,0 +1,72 @@
+<div class="ui row bg">
+  <div class="ui vertical footer segment">
+    <br>
+    <div class="ui container">
+      <div class="ui stackable  height grid">
+        <div class="five wide column">
+          <br>
+          <div class="row">
+            <img class="ui medium centered image" src="../../../assets/img/Bertolino.png">
+          </div>
+          <br>
+          <div class="row justify">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel deleniti vero, error quibusdam beatae ratione nesciunt
+              sint aut aspernatur impedit. Dicta vitae cumque dolor, expedita magnam ea cupiditate! Eligendi, a.</p>
+          </div>
+        </div>
+        <div class="five wide computer only column">
+          <br>
+          <div class="row padd">
+            <b>MENU</b>
+          </div>
+          <div class="ui link list padd">
+            <a class="item gray" routerLink="/inicio"> Inicio</a>
+            <a class="item gray" routerLink="/agente"> Agente</a>
+            <a class="item gray" routerLink="/propiedades"> Corretaje de propiedades</a>
+            <a class="item gray" routerLink="/remates"> Remates</a>
+            <a class="item gray" routerLink="/agua"> Derechos de agua</a>
+            <a class="item gray" routerLink="/mineras"> Pertenencias mineras</a>
+            <a class="item gray" routerLink="/contacto"> Contacto</a>
+          </div>
+        </div>
+        <div class="six wide column">
+          <br>
+          <div class="row">
+            <b>NUEVAS PROPIEDADES</b>
+          </div>
+          <br>
+          <div class="row">
+            <div class="ui stackable two column grid">
+              <a *ngFor="let propiedad of propiedades | slice:0:4; let i=index" class="column">
+                <div class="ui grid">
+                  <div class="eight wide column">
+                    <img class="ui middle aligned centered fluid image" src="{{loadImage(propiedad)}}">
+                  </div>
+                  <div class="eight wide column middle aligned content">
+                    <div class="ui row">
+                      <p class="gray">
+                        <b>{{propiedad.location}}</b>
+                      </p>
+                    </div>
+                    <div class="ui row">
+                      <p>{{(propiedad.date!=null) ?(getDate(propiedad.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+  <div class="row copyr">
+    <br>
+    <label>Copyright 2017 / Página creada por
+      <a href="http://www.noduschile.com" target="_blank">
+        <b class="greencolor">CF&NODUS</b>
+      </a>
+    </label>
+  </div>
+</div>

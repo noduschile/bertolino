@@ -1,0 +1,24 @@
+<div class="ui equal width center aligned grid">
+  <div class="row">
+    <div class="nopad column bg">
+        <app-navbar></app-navbar>
+      <h1 class="pad-text">PROPIEDADES</h1>
+    </div>
+  </div>
+</div>
+<div class="page">
+  <app-search (propiedadesFiltered)="handlePropiedadesFiltered($event)"></app-search>
+  <br>
+  <br>
+  <div class="ui one column centered grid">
+    <div class="sixteen wide column">
+      <app-propiedad-card *ngFor="let propiedad of propiedadesPage" [propiedad]="propiedad"></app-propiedad-card>
+    </div>
+    <div class="five wide middle aligned column">
+      <sui-pagination [collectionSize]="filteredPropiedades.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
+        [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
+      </sui-pagination>
+    </div>
+  </div>
+  <br>
+</div>

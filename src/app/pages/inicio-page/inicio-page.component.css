@@ -1,0 +1,50 @@
+.bg {
+  background-image:url('../../../assets/img/inicio.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /* background-position: center;  */
+  /* background-attachment: fixed; */
+  color: #FFFFFF;
+  /* height: 36em; */
+  padding: 0 !important;
+}
+
+.blue {
+  background-color: rgba(11, 63, 138, 0.9);
+  /* height: 20em; */
+  padding: 0 !important;
+  text-align: left;
+  /* position: absolute;
+  bottom: 0;
+  width: 100%; */
+}
+
+.blue.row>a{
+  color: white;
+}
+
+.nav {
+  height: 33em;
+  padding: 0 !important;
+}
+
+.centertext {
+  padding-top: 5%;
+  padding-bottom: 5% !important;
+}
+
+
+.line {
+  width: 100px;
+  height: 10px;
+  background: rgb(116, 159, 52);
+  border-radius: 2px;
+}
+
+.ui.divider {
+  text-transform: none !important;
+}
+
+nopad {
+  padding: 0 !important;
+}

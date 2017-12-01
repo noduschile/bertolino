@@ -1,0 +1,111 @@
+<div class="ui centered grid">
+    <div class="eleven wide column">
+      <div class="ui raised border segments">
+        <div class="ui stackable grid">
+          <div class="five wide column">
+            <img class="ui fluid image img" src="{{image}}">
+          </div>
+          <div class="seven wide column">
+            <div class="ui border-content segments">
+              <div class="ui basic right aligned segment upper">
+                {{(propiedad.status) ? propiedad.status: "N/A" }}
+              </div>
+              <div class="ui basic segment nopadd">
+                <div class="border-left">
+                  <h2>{{propiedad.type}}</h2>
+                  <div class="ui location">
+                    <p>{{propiedad.location}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="ui basic right aligned segment price">
+                {{propiedad.price.unit}} {{propiedad.price.value | number}}
+              </div>
+              <div class="ui basic segment">
+                <div class="ui right floated primary button" (click)="toCollapse()">
+                  <b>{{bottonText}}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="four wide column">
+            <div class="ui bluecard inverted border segment">
+              <div class="ui icons grid padd">
+                <div class="row">
+                  <div class="four wide column">
+                    <i class="large inverted bed icon"></i>
+                  </div>
+                  <div class="twelve wide column paddlef">
+                    <label class="font-card">
+                      <b>{{propiedad.rooms}}</b>
+                    </label>
+                    <label>habitaciones</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="four wide column">
+                    <i class="large inverted bath icon"></i>
+                  </div>
+                  <div class="twelve wide column paddlef">
+                    <label class="font-card">
+                      <b>{{propiedad.baths}}</b>
+                    </label>
+                    <label>baños</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="four wide column">
+                    <i class="large inverted car icon"></i>
+                  </div>
+                  <div class="twelve wide column paddlef">
+                    <label class="font-card">
+                      <b>{{propiedad.parkings}}</b>
+                    </label>
+                    <label>estacionamientos</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="four wide column">
+                    <i class="large inverted home icon"></i>
+                  </div>
+                  <div class="twelve wide column paddlef">
+                    <label class="font-card">
+                      <b>{{(propiedad.area!= undefined)?propiedad.area.value:'sin'}}</b>
+                    </label>
+                    <label>{{(propiedad.area!= undefined)?propiedad.area.unit:'info'}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+  
+  <div class="sixteen wide column">
+    <div [suiCollapse]="collapse">
+      <div class="ui raised segment">
+        <div class="ui two column stackable grid">
+          <div class="ten wide black column">
+            <swiper [config]="config" [(index)]="index">
+              <div *ngFor="let image of propiedad.images" class="swiper-slide">
+                <img class="ui middle aligned centered fluid image" src={{image.url}}>
+              </div>
+            </swiper>
+          </div>
+          <div class="six wide column">
+            <div class="ui justified container basic segment scroll">
+              <h3 class="ui centered header">DETALLES DE LA PROPIEDAD</h3>
+              <p>{{propiedad.description}}</p>
+            </div>
+            <div class="ui right floated primary button" (click)="toCollapse()">
+              Ocultar
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
