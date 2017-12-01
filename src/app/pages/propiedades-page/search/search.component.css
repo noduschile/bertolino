@@ -24,6 +24,11 @@
   box-shadow: none;
 }
 
+.color-search {
+  color: white !important;
+  font-weight: 600;
+}
+
 .ui.primary.buttons .button,
 .ui.primary.button {
   background-color: rgb(116, 159, 52);

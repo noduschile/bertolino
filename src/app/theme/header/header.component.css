@@ -6,10 +6,23 @@
     margin-left: 3em;
 }
 
+.padd-left {
+    padding-left: 0 !important;
+}
+
+.number-phone {
+    font-size: 15px;
+    color: rgb(63, 63, 63) !important;
+}
+
 .sizetransform {
     width: 70px !important;
     height: auto;
     transform: skew(20deg);
+}
+
+.image-phone {
+    width: 100% !important;
 }
 
 .size {

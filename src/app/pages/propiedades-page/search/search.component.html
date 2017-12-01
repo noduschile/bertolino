@@ -4,13 +4,13 @@
     <div class="fourteen wide column">
       <sui-tabset>
         <div class="ui green pointing secondary stackable menu">
-          <div class="item">
+          <div class="item color-search">
             <i class="small search icon">
             </i>
             BÚSQUEDA RÁPIDA</div>
-          <a class="item right aligned" [ngClass]="{ active: activeTab[0]}" suiTabHeader="1" (click)="onUpdateStatus('todo')">TODO</a>
-          <a class="item" [ngClass]="{ active: activeTab[1]}" suiTabHeader="1" (click)="onUpdateStatus('arriendo')">ARRIENDO</a>
-          <a class="item" [ngClass]="{ active: activeTab[2]}" suiTabHeader="1" (click)="onUpdateStatus('venta')">VENTA</a>
+          <a class="item right aligned color-search" [ngClass]="{ active: activeTab[0]}" suiTabHeader="1" (click)="onUpdateStatus('todo')">TODO</a>
+          <a class="item color-search" [ngClass]="{ active: activeTab[1]}" suiTabHeader="1" (click)="onUpdateStatus('arriendo')">ARRIENDO</a>
+          <a class="item color-search" [ngClass]="{ active: activeTab[2]}" suiTabHeader="1" (click)="onUpdateStatus('venta')">VENTA</a>
         </div>
         <div class="ui basic segment" suiTabContent="1">
           <div class="ui stackable grid container">
