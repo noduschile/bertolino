@@ -9,6 +9,7 @@
   padding: 0 !important;
 }
 
+
 .blue {
   background-color: rgba(11, 63, 138, 0.9);
   /* height: 20em; */
@@ -25,6 +26,10 @@
 
 .nav {
   height: 33em;
+  padding: 0 !important;
+}
+
+.navphone {
   padding: 0 !important;
 }
 
@@ -45,6 +50,6 @@
   text-transform: none !important;
 }
 
-nopad {
-  padding: 0 !important;
+.nopad {
+  padding-top: 0 !important;
 }

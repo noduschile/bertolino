@@ -6,7 +6,7 @@
     </p>
   </div>
   <div class="two wide column">
-    <div class="ui green button" (click)="show = true">SUSCRIBIRSE</div>
+    <div class="ui button" (click)="show = true">SUSCRIBIRSE</div>
   </div>
 </div>
 
@@ -18,7 +18,7 @@
         <div class="two fields">
           <div class="field">
             <label>Nombre</label>
-            <input [(ngModel)]= "correo.name" name="nombre" placeholder="Nombre y apellido" type="text">
+            <input [(ngModel)]= "correo.name" name="nombre" placeholder="Nombre y apellido" type="text" autofocus>
           </div>
           <div class="field">
             <label>E-mail</label>
@@ -29,7 +29,7 @@
     </div>
   </div>
   <div class="actions">
-    <button class="ui green button" (click)="setCorreo(correo)" autofocus>Suscribirse</button>
+    <button class="ui button" (click)="setCorreo(correo)">SUSCRIBIRSE</button>
   </div>
 </sui-modal>
 

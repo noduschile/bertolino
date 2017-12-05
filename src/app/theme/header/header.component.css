@@ -11,8 +11,10 @@
 }
 
 .number-phone {
-    font-size: 15px;
-    color: rgb(63, 63, 63) !important;
+    font-family: roboto !important;
+    font-size: 14px;
+    font-weight: 300;
+    color: white;
 }
 
 .sizetransform {
@@ -22,7 +24,8 @@
 }
 
 .image-phone {
-    width: 100% !important;
+    width: 30px !important;
+    padding-left: 10px;
 }
 
 .size {
@@ -57,6 +60,7 @@
 
 .nopad {
     padding: 0 !important;
+    margin: 0 !important;
 }
 .button {
     margin-bottom: 10px !important;
@@ -76,4 +80,17 @@
     color: rgb(110, 110, 110);
     padding-top: 0 !important;
     margin-top: 0 !important;
+}
+
+.color {
+    background: rgb(116, 159, 52);
+    color: white;
+}
+
+.left {
+    padding-left: 15px !important;
+}
+
+.right {
+    padding-right: 15px !important;
 }
