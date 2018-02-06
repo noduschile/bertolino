@@ -39,7 +39,7 @@
             </sui-dimmer>
             <form class="ui form">
               <div class="field">
-                <div class="three fields">
+                <div class="four fields">
                   <div class="field">
                     <label>Tipo de Propiedad</label>
                     <lsu-dropdown [(ngModel)]="propiedad.type" name="type" [data]="typeOptions" placeHolder="Tipo de propiedad"></lsu-dropdown>
@@ -50,8 +50,12 @@
                     
                   </div>
                   <div class="field">
-                    <label>Ubicación</label>
-                    <input type="text" [(ngModel)]="propiedad.location" name="location" placeholder="Ubicación">
+                    <label>Dirección</label>
+                    <input type="text" [(ngModel)]="propiedad.location" name="location" placeholder="Dirección">
+                  </div>
+                  <div class="field">
+                    <label>Comuna</label>
+                    <input type="text" [(ngModel)]="propiedad.comuna" name="comuna" placeholder="Comuna">
                   </div>
                 </div>
               </div>
@@ -135,18 +139,20 @@
     <table class="ui fixed single line celled unstackable olive table">
       <thead>
         <tr>
-          <th class="three wide center aligned">Fecha Publicación</th>
-          <th class="four wide center aligned">Tipo Propiedad</th>
-          <th class="four wide center aligned">Ubicación</th>
-          <th class="three wide center aligned">Estado</th>
+          <th class="two wide center aligned">Fecha</th>
+          <th class="three wide center aligned">Tipo Propiedad</th>
+          <th class="four wide center aligned">Dirección</th>
+          <th class="three wide center aligned">Comuna</th>
+          <th class="two wide center aligned">Estado</th>
           <th class="two wide center aligned">Acción</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let propiedad of propiedadesPage">
           <td class="center aligned">{{(propiedad.date!=null) ?(getDate(propiedad.date) | date: 'dd/MM/yy') : 'Sin Fecha'}}</td>
-          <td>{{propiedad.type}}</td>
+          <td class="center aligned">{{propiedad.type}}</td>
           <td>{{propiedad.location}}</td>
+          <td class="center aligned">{{propiedad.comuna}}</td>
           <td class="center aligned">{{propiedad.status}}</td>
           <td class="right aligned">
             <ng-template let-popup #popupTemplate>
@@ -168,7 +174,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <th colspan="5">
+          <th colspan="6">
             <sui-pagination [collectionSize]="(propiedades | async )?.length" [pageSize]="pageSize" [maxSize]="maxSize" [hasEllipses]="false"
               [canRotate]="true" [(page)]="selectedPage" (pageChange)="pageChange($event)">
             </sui-pagination>

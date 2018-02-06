@@ -2,6 +2,7 @@ export class Propiedad {
     type: string = "";
     status: string = "";
     location: string = "";
+    comuna: string = "";
     rooms: number = 0;
     price: {
         value: number;

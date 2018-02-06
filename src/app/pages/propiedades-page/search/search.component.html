@@ -15,12 +15,12 @@
         <div class="ui basic segment" suiTabContent="1">
           <div class="ui stackable grid container">
             <div class="four wide computer eight wide tablet column">
-              <label>Ubicación</label>
-              <lsu-dropdown [(ngModel)]="selected.location" (ngModelChange)="onUpdateLocation($event)" [data]="location" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
-            </div>
-            <div class="four wide computer eight wide tablet column">
               <label>Tipo de Propiedad</label>
               <lsu-dropdown [(ngModel)]="selected.type" (ngModelChange)="onUpdateType($event)" [data]="type" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
+            </div>
+            <div class="four wide computer eight wide tablet column">
+              <label>Comuna</label>
+              <lsu-dropdown [(ngModel)]="selected.comuna" (ngModelChange)="onUpdateComuna($event)" [data]="comuna" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
             </div>
             <div class="four wide computer eight wide tablet column">
               <label>Área</label>
@@ -91,7 +91,7 @@
               </ng-template>
             </div>
             <div class="four wide computer eight wide tablet column">
-              <label>Dormitorios</label>
+              <label>Dormitorios/privados</label>
               <lsu-dropdown [(ngModel)]="selected.rooms" (ngModelChange)="onUpdateRooms($event)" [data]="rooms" [multiple]="true" placeHolder="Seleccione"></lsu-dropdown>
             </div>
             <div class="four wide computer eight wide tablet column">

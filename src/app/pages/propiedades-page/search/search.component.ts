@@ -17,6 +17,7 @@ export class SearchComponent implements OnInit {
   activeTab: any[] = [true, false, false];
   propiedades: any[];
   location: string[] = [];
+  comuna: string[] = [];
   type: string[] = [];
   rooms: number[] = [];
   parkings: number[] = [];
@@ -29,6 +30,7 @@ export class SearchComponent implements OnInit {
   selected = {
     status: 'todo',
     location: [],
+    comuna: [],
     type: [],
     rooms: [],
     parkings: [],
@@ -131,6 +133,11 @@ export class SearchComponent implements OnInit {
       }), 'location'), function (item) {
         return item.location
       }));
+      this.comuna = _.orderBy(_.map(_.uniqBy(_.filter(this.propiedades, function (item) {
+        return _.has(item, 'comuna') && item.comuna != null
+      }), 'comuna'), function (item) {
+        return item.comuna
+      }));
       this.type = _.orderBy(_.map(_.uniqBy(_.filter(this.propiedades, function (item) {
         return _.has(item, 'type') && item.type != null
       }), 'type'), function (item) {
@@ -178,6 +185,9 @@ export class SearchComponent implements OnInit {
   }
   onUpdateLocation(e) {
     this.filterContains("location", this.selected.location);
+  }
+  onUpdateComuna(e) {
+    this.filterContains("comuna", this.selected.comuna);
   }
   onUpdateType(e) {
     this.filterContains("type", this.selected.type);
